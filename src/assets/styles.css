@@ -1,3 +1,15 @@
 body {
   margin: 10%;
+  background-color: beige;
+  font-size: larger;
+}
+
+#min, #max, #tries {
+  white-space:nowrap;
+  font-weight: bold;
+}
+
+.lastResult {
+  padding: 5px;
+  border-radius: 5px;
 }
