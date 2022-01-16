@@ -1,3 +1,5 @@
+import LunchMenu from './assets/LunchMenu';
+
 const box1 = document.getElementById('box1');
 const box2 = document.getElementById('box2');
 const langSwitch = document.getElementById('langSwitch');
@@ -6,20 +8,8 @@ const pickRandom = document.getElementById('pickRandom');
 let lang = 'en';
 let sortBy = 'asc';
 
-const coursesEn = [
-  'Hamburger, cream sauce and poiled potates',
-  'Goan style fish curry and whole grain rice',
-  'Vegan Chili sin carne and whole grain rice',
-  'Broccoli puree soup, side salad with two napas',
-  'Lunch baguette with BBQ-turkey filling',
-  'Cheese / Chicken / Vege / Halloum burger and french fries'];
-const coursesFi = [
-  'Jauhelihapihvi, ruskeaa kermakastiketta ja keitettyä perunaa',
-  'Goalaista kalacurrya ja täysjyväriisiä',
-  'vegaani Chili sin carne ja täysjyväriisi',
-  'Parsakeittoa,lisäkesalaatti kahdella napaksella',
-  'Lunch baguette with BBQ-turkey filling',
-  'Juusto / Kana / Kasvis / Halloumi burgeri ja ranskalaiset'];
+const coursesEn = [];
+const coursesFi = [];
 
 const looper = (courses) => {
   box1.innerText = '';
@@ -28,13 +18,23 @@ const looper = (courses) => {
   }
 };
 
+const courseGetter = () => {
+  for (let i = 0; i <= Object.keys(LunchMenu.courses).length; i++) {
+    if (LunchMenu.courses[i] !== undefined) {
+      coursesFi.push(LunchMenu.courses[i].title_fi);
+      coursesEn.push(LunchMenu.courses[i].title_en);
+    }
+  }
+};
+
+courseGetter();
+
 const sorter = (courses, sortBy1) => {
   if (sortBy1 === 'asc') {
     courses.sort();
   } else {
     courses.sort().reverse();
   }
-  console.log(courses);
   sort.innerText = `Sort by: ${sortBy1}`;
   return courses;
 };
@@ -46,7 +46,6 @@ const sortSwapper = (sortBy1) => {
 };
 
 langSwitch.addEventListener('click', function() {
-  console.log(sortBy);
   if (lang === 'en') {
     lang = 'fi';
     if (sortBy === 'asc') {
@@ -63,7 +62,6 @@ langSwitch.addEventListener('click', function() {
 });
 
 sort.addEventListener('click', function() {
-  console.log(sortBy);
   if (lang === 'en') {
     if (sortBy === 'asc') {
       looper(sorter(coursesEn, 'desc'));
