@@ -1,5 +1,6 @@
 import LunchMenu from './JSONfiles/LunchMenu.JSON';
 import LunchMenuEn from './JSONfiles/LunchMenuEn.JSON';
+import {getFood} from './network/Fetch';
 
 const box1 = document.getElementById('box1');
 const box2 = document.getElementById('box2');
@@ -12,6 +13,9 @@ let sortBy = 'asc';
 const coursesEn = [];
 const coursesFi = [];
 
+const temp1 = getFood().then(data => tempFi = data);
+console.log(temp1);
+
 const looper = (courses) => {
   box1.innerText = '';
   for (let i = 0; i < courses.length; i++) {
@@ -23,7 +27,7 @@ const looper = (courses) => {
  * understand what menu/menus were intended to be seen
  * So I just hardcoded first meals of first day
  */
-const tempFi = LunchMenu.LunchMenus[0].SetMenus[0].Meals;
+let tempFi = LunchMenu.LunchMenus[0].SetMenus[0].Meals;
 const tempEn = LunchMenuEn.LunchMenus[0].SetMenus[0].Meals;
 
 const courseGetter = (arr, obj) => {

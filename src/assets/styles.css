@@ -1,5 +1,5 @@
 body {
-  margin: 10%;
+  margin: 5%;
   background-color: beige;
   font-size: larger;
 }
@@ -9,7 +9,45 @@ body {
   border-radius: 5px;
 }
 
-div {
+.box {
   padding-bottom: 20px;
   padding-top: 20px;
+}
+
+#spaceCat {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 30px);
+  background-color: black;
+  background-image: url("ISS-40.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.layer1 {
+  position: absolute;
+  top: 30%;
+  left: 20%;
+  z-index: 4;
+  background-image: url("astronaut.png");
+  width: 225px;
+  height: 211px;
+}
+
+.layer2 {
+  position: absolute;
+  top: 30%;
+  left: 15%;
+  z-index: 3;
+  background-image: url("shuttle.png");
+  width: 500px;
+  height: 496px;
+}
+
+.mouse, .mouse-center {
+  color: white;
+  border-color: white;
 }
